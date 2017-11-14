@@ -39,5 +39,5 @@ Function Connect-ExchangeLocal {
         [string]$SessionName = 'Exchange Local'
     )
     $ExchangeSession = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri "http://$ServerFQDN/PowerShell/" -Authentication Kerberos -Name $SessionName
-    Import-Module (Import-PSSession $ExchangeSession -AllowClobber -DisableNameChecking) -Global
+    Import-Module (Import-PSSession $ExchangeSession -AllowClobber -DisableNameChecking) -Global -DisableNameChecking
 }
