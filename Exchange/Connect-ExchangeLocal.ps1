@@ -33,11 +33,11 @@ Function Connect-ExchangeLocal {
     #>
     [cmdletbinding()]
     param (
-        [Parameter(Position = 0, Mandatory = $true)]
-        [string]$ServerFQDN,
+        [Parameter(Position = 0)]
+        [string]$ServerFQDN = 'MS-EX03.eigenhaard.nl',
         [Parameter(Position = 1)]
         [string]$SessionName = 'Exchange Local'
     )
     $ExchangeSession = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri "http://$ServerFQDN/PowerShell/" -Authentication Kerberos -Name $SessionName
-    Import-Module (Import-PSSession $ExchangeSession -AllowClobber) -Global
+    Import-Module (Import-PSSession $ExchangeSession -AllowClobber -DisableNameChecking) -Global
 }

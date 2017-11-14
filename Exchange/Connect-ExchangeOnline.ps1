@@ -39,5 +39,5 @@ Function Connect-ExchangeOnline {
     $Uri = 'https://ps.outlook.com/powershell/'
 
     $Session = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri $Uri -Credential $Cred -Authentication Basic -AllowRedirection -Name $SessionName
-    Import-Module (Import-PSSession $Session -AllowClobber) -Global
+    Import-Module (Import-PSSession $Session -AllowClobber -DisableNameChecking) -Global
 }
