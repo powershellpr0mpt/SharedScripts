@@ -33,8 +33,8 @@ Function Connect-ExchangeLocal {
     #>
     [cmdletbinding()]
     param (
-        [Parameter(Position = 0)]
-        [string]$ServerFQDN = 'MS-EX03.eigenhaard.nl',
+        [Parameter(Position = 0, Mandatory = $true)]
+        [string]$ServerFQDN,
         [Parameter(Position = 1)]
         [string]$SessionName = 'Exchange Local'
     )
