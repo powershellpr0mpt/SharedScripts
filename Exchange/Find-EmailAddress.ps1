@@ -1,4 +1,4 @@
-Function Find-EmailAddress {
+﻿Function Find-EmailAddress {
     <#
     .SYNOPSIS
     Find a specific email address in your environment
@@ -14,7 +14,7 @@ Function Find-EmailAddress {
     Name: Find-EmailAddress.ps1
     Author: Robert Prüst
     DateCreated: 15-06-2015
-    DateModified: 12-11-2017
+    DateModified: 15-11-2017
     Blog: http://powershellpr0mpt.com
 
     .LINK
@@ -37,8 +37,7 @@ Function Find-EmailAddress {
     )
 
     try {
-        Get-Recipient -ResultSize Unlimited -Filter {
-            EmailAddresses -like "*$EmailAddress*"
+        Get-Recipient -ResultSize Unlimited -Filter "EmailAddresses -like '*$EmailAddress*'"
         } | Select-Object Name, EmailAddresses, RecipientType
     }
     catch [System.Management.Automation.CommandNotFoundException] {
