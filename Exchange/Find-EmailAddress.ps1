@@ -37,8 +37,7 @@
     )
 
     try {
-        Get-Recipient -ResultSize Unlimited -Filter "EmailAddresses -like '*$EmailAddress*'"
-        } | Select-Object Name, EmailAddresses, RecipientType
+        Get-Recipient -ResultSize Unlimited -Filter "EmailAddresses -like '*$EmailAddress*'" | Select-Object Name, EmailAddresses, RecipientType
     }
     catch [System.Management.Automation.CommandNotFoundException] {
         Write-Warning "Unable to find email address, you don't seem to be connected to an Exchange server"
