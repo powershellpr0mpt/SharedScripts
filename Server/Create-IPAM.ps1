@@ -40,7 +40,7 @@ foreach ($DNSServer in $DNSServers) {
 }
 foreach ($DHCPServer in $DHCPServers) {
     Set-GPPermissions -Name "$($GpoPrefix)_DHCP" -PermissionLevel GpoApply -TargetType Computer -TargetName $DHCPServer.Name
-    Invoke-Command -ComputerName $DHCPServer.Name -ScriptBlock {net localgroup "event log readers" "HAARD\IPAMUG" /add ; gpupdate /force}
+    Invoke-Command -ComputerName $DHCPServer.Name -ScriptBlock {net localgroup "event log readers" "$env:USERDOMAIN\IPAMUG" /add ; gpupdate /force}
 }
 foreach ($DCServer in $DCServers) {
     Set-GPPermissions -Name "$($GpoPrefix)_DC_NPS" -PermissionLevel GpoApply -TargetType Computer -TargetName $DCServer.Name
