@@ -23,7 +23,7 @@ Invoke-IpamServerProvisioning -WidSchemaPath $IPAM_DBFolder -ProvisioningMethod 
 
 #region Create IPAM GPOs
 $Domain = $env:USERDNSDOMAIN
-Invoke-IpamGpoProvisioning -Domain $Domain -GpoPrefixName $GpoPrefix -DelegatedGpoGroup 'Server Administrators' -PassThru -Force
+Invoke-IpamGpoProvisioning -Domain $Domain -GpoPrefixName $GpoPrefix -PassThru -Force
 #endregion
 
 #region Configure GPOs
