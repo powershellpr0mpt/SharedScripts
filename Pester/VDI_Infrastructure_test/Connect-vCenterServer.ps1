@@ -31,18 +31,20 @@
     [Cmdletbinding()]
     param(
         [Parameter(Position = 0, Mandatory = $true)]
-        [string]$vCenterServer
+        [string]$vCenterServer,
+        [ValidateNotNull()]
+        [System.Management.Automation.PSCredential]
+        [System.Management.Automation.Credential()]
+        $Credential = (Get-Credential -Message 'Enter vCenter server credentials' -username $env:USERNAME)
     )
     $vCenterServerName = $vCenterServer + '.' + $Env:USERDNSDOMAIN
+    Write-Verbose $vCenterServerName
 
     if ($global:DefaultVIServer.Name -notcontains $vCenterServerName) {
-        if ($Cred_ADM) {
-            Write-Verbose "Connecting to vCenter server '$vCenterServerName' - using ADM credentials"
-            Connect-VIServer -Server $vCenterServerName -Credential $Cred_ADM -ErrorAction Stop | Out-Null
-        }
-        else {
-            Write-Verbose "Connecting to vCenter server '$vCenterServerName' - please enter credentials"
-            Connect-VIServer -Server $vCenterServerName -Credential (Get-Credential) -ErrorAction Stop | Out-Null
-        }
+        Write-Verbose "Connecting to vCenter server '$vCenterServerName' "
+        Connect-VIServer -Server $vCenterServerName -Credential $Credential
+    }
+    else {
+        Write-Warning "Already connected to vCenter server '$vCenterServerName'"
     }
 }
