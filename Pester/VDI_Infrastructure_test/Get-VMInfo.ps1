@@ -50,12 +50,12 @@
     )
     begin {
         $Samples = $Minute * 3 + 1 # Every minute has 3 interval periods [x:00/x:20/x:40] + 1 for starting interval
-
+        $vCenterServerName = $vCenterServer + '.' + $Env:USERDNSDOMAIN
         Connect-vCenterServer -vCenterServer $vCenterServer
     }
     process {
 
-        $VMs = Get-VM $VMName -Server $vCenterServer | Where-Object {$_.PowerState -eq 'PoweredOn'} | Sort-Object Name
+        $VMs = Get-VM $VMName -Server $vCenterServerName | Where-Object {$_.PowerState -eq 'PoweredOn'} | Sort-Object Name
         foreach ($VM in $VMs) {
             $VMStats = $VM | Get-Stat -Stat cpu.usage.average, mem.usage.average -Realtime -MaxSamples $Samples
             $Output = [PSCustomObject]@{
