@@ -1,4 +1,40 @@
 Function Get-VMHostInfo {
+    <#
+    .SYNOPSIS
+    Get realtime performance and configuration info of vSphere hosts
+
+    .DESCRIPTION
+    Log into VMWare vCenters to check the realtime performance of the current vSphere hosts
+    Some of the checks performed are:
+        - What version is the host(s)
+        - What is the current CPU usage of the host(s)
+        - What is the current memory usage of the host(s)
+        - What is the current Configuration status of the host(s)
+
+
+    .PARAMETER VMHost
+    Enter part of the host name you want to check for information
+
+    .PARAMETER vCenterServer
+    Enter the vCenterServer name to which you'd like to connect and collect information from
+
+    .EXAMPLE
+    Get-VMHostInfo -vCenterServer VC01.contoso.com
+
+    Description
+    -----------
+    Gets the information for all vsphere hosts connected to  VC01.contoso.com
+
+    .NOTES
+    Name: Get-VMHostInfo.ps1
+    Author: Robert Prüst
+    DateCreated: 27-02-2018
+    DateModified: 28-02-2018
+    Blog: http://powershellpr0mpt.com
+
+    .LINK
+    http://powershellpr0mpt.com
+#>
     [Cmdletbinding(DefaultParameterSetName = 'Hosts')]
     param(
         [Parameter(Position = 0)]

@@ -1,32 +1,33 @@
 ﻿Function Get-VMInfo {
-    [Cmdletbinding()]
     <#
     .SYNOPSIS
     Get realtime performance info of VM's
 
     .DESCRIPTION
     Log into VMWare vCenters to check the realtime performance of the current VM's
-    The checks performed are:
-        - Are the VM's running?
+    Some checks performed are:
+        - Is the VM running?
         - Is the Max CPU value higher than <MaxCpu> over the period of <Minute> minutes
         - Is the Average CPU value higher than <AvgCpu> over the period of <Minute> minutes
 
 
     .PARAMETER VMName
     Enter part of the VMName you want to check for information
+    Default value is *, meaning all VM's
 
     .PARAMETER vCenterServer
     Enter the vCenterServer name to which you'd like to connect and collect information from
 
     .PARAMETER Minute
     Enter the amount of minutes your sample size should be
+    Default value is 5 minutes
 
     .EXAMPLE
-    Get-VMInfo
+    Get-VMInfo -vCenterServer VC01.contoso.com
 
     Description
     -----------
-    Gets the information for all VM's using default values
+    Gets the information for all VM's managed by VC01.contoso.com using default values
 
     .NOTES
     Name: Get-VMInfo.ps1
@@ -38,7 +39,7 @@
     .LINK
     http://powershellpr0mpt.com
 #>
-
+    [Cmdletbinding()]
     param (
         [Parameter(Position = 0, ValueFromPipeline = $true, ValueFromPipelineByPropertyName = $true)]
         [string[]]$VMName = '*',
