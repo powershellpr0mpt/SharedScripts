@@ -17,7 +17,7 @@ Function Connect-ExchangeLocal {
     Name: Connect-ExchangeLocal.ps1
     Author: Robert Prüst
     DateCreated: 15-08-2017
-    DateModified: 11-12-2017
+    DateModified: 23-08-2019
     Blog: http://powershellpr0mpt.com
 
     .LINK
@@ -33,8 +33,8 @@ Function Connect-ExchangeLocal {
     #>
     [cmdletbinding()]
     param (
-        [Parameter(Position = 0)]
-        [string]$ServerFQDN = 'MS-EX03.eigenhaard.nl',
+        [Parameter(Position = 0, Mandatory = $true)]
+        [string]$ServerFQDN,
         [Parameter(Position = 1)]
         [string]$SessionName = 'Exchange Local'
     )
