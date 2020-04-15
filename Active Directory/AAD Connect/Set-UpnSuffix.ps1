@@ -1,6 +1,6 @@
 [cmdletbinding()]
 param(
-    $AddUpnSuffix = 'cvg.nl'
+    $AddUpnSuffix = 'contoso.com'
 )
 
 #Add UPN to AD
