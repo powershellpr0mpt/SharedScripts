@@ -1,4 +1,4 @@
-﻿Function Get-BootTime {
+﻿function Get-BootTime {
     <#
     .SYNOPSIS
     Get a machine's boot time and uptime
@@ -14,14 +14,19 @@
     Name: Get-BootTime.ps1
     Author: Robert Prüst
     DateCreated: 03-06-2015
-    DateModified: 12-11-2017
+    DateModified: 06-07-2023
     Blog: http://powershellpr0mpt.com
 
     .LINK
     http://powershellpr0mpt.com
 
     .EXAMPLE
-    Get-BootTime -ComputerName DC01,EX01
+C:\>Get-BootTime -Computername DC01,EXCH01
+
+ComputerName BootTime             UpTime
+------------ --------             ------
+DC01         7/5/2023 10:20:28 PM 00 days 17 hours 28 minutes
+EXCH01       7/5/2023 07:07:28 PM 00 days 20 hours 41 minutes
 
     Description
     -----------
